@@ -1,0 +1,8 @@
+Standard Java Build Interface
+=============================
+
+The Standard Java Build Interface project (**sjbi**, pronounced 'shibby') aims to provide a common API for executing builds implemented using a variety of build systems. The underlying premise of the project is that Java projects all require the same - or very similar - activities in order to build. Whether those activities are orchestrated by Maven, Ant, Gradle, or whatever, it should be possible to provide some minimal configuration to map these builds onto a common vocabulary. From here, it's just a matter of using the right adapter to execute that vocabulary for the project. 
+
+If the mapping configuration is sufficiently simple, it should be possible to actually detect the mapping, either on-the-fly or with an offline tool. At the simple end of this spectrum, Maven mappings should be automatic, as should Gradle. On the other end, Make and Ant may prove to be much more the square peg that has to be wedged into the round hole. Especially in these more complex mappings, it's possible that some of the nuance available in the original build system will be lost. However, this API is mainly focused on the steps required to produce a release. Therefore, since most or all of the build tools in use today support some notion of inter-task dependencies and grouping, it should be feasible to map enough of the original build system onto the common vocabulary that it will support a release of the project.
+
+The point of this exercise is to provide a mechanism for toolchains that implement a larger release process to hook into, in order to support projects whose builds are written using myriad different tools.
