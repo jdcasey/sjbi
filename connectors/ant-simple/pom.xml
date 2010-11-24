@@ -3,17 +3,18 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <artifactId>sjbi</artifactId>
+    <artifactId>sjbi-connectors</artifactId>
     <groupId>org.commonjava.sjbi</groupId>
     <version>0.1-SNAPSHOT</version>
   </parent>
   
-  <artifactId>sjbi-api</artifactId>
-  <name>Standard Java Build Interface - API</name>
+  <artifactId>sjbi-connector-ant-simple</artifactId>
+  <name>SJBi - Ant Connector (Simple)</name>
+  
   <dependencies>
-  	<dependency>
-  		<groupId>junit</groupId>
-  		<artifactId>junit</artifactId>
-  	</dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+    </dependency>
   </dependencies>
 </project>
