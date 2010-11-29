@@ -19,11 +19,14 @@ package org.commonjava.sjbi.builder;
 
 import org.commonjava.sjbi.BuildPhase;
 
+import java.io.File;
+
 public interface BuildMechanism<C extends BuildContext>
 {
 
-    boolean isWorkflowImplied();
+    BuildCapabilities getBuildCapabilities();
 
-    BuildResult build( BuildPhase endPhase, C context );
+    BuildResult build( BuildPhase endPhase, File projectDirectory, C context )
+        throws BuildException;
 
 }

@@ -15,17 +15,12 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.commonjava.sjbi.builder;
+package org.commonjava.sjbi.maven3.builder;
 
-import org.commonjava.sjbi.model.ArtifactSetRef;
+import org.commonjava.sjbi.builder.BuildContext;
 
-import java.util.Collection;
-
-public interface BuildResult
+public class M3Context
+    implements BuildContext
 {
-
-    Collection<Throwable> getErrors();
-
-    Collection<ArtifactSetRef> getArtifactSets();
 
 }

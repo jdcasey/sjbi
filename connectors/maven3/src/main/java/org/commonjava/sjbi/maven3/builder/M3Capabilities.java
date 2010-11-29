@@ -15,17 +15,23 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.commonjava.sjbi.builder;
+package org.commonjava.sjbi.maven3.builder;
 
-import org.commonjava.sjbi.model.ArtifactSetRef;
+import org.commonjava.sjbi.builder.BuildCapabilities;
 
-import java.util.Collection;
-
-public interface BuildResult
+public final class M3Capabilities
+    implements BuildCapabilities
 {
 
-    Collection<Throwable> getErrors();
+    public static final M3Capabilities INSTANCE = new M3Capabilities();
 
-    Collection<ArtifactSetRef> getArtifactSets();
+    private M3Capabilities()
+    {
+    }
+
+    public boolean usesAutoChainedWorkflow()
+    {
+        return true;
+    }
 
 }

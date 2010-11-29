@@ -16,5 +16,16 @@
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
     </dependency>
+    <dependency>
+    	<groupId>org.commonjava.sjbi</groupId>
+    	<artifactId>sjbi-api</artifactId>
+    	<version>${project.version}</version>
+    	<scope>compile</scope>
+    </dependency>
+    <dependency>
+    	<groupId>org.commonjava.emb</groupId>
+    	<artifactId>emb-booter</artifactId>
+    	<version>0.4</version>
+    </dependency>
   </dependencies>
 </project>

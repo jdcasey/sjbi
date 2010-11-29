@@ -17,15 +17,9 @@
 
 package org.commonjava.sjbi.builder;
 
-import org.commonjava.sjbi.model.ArtifactSetRef;
-
-import java.util.Collection;
-
-public interface BuildResult
+public interface BuildCapabilities
 {
 
-    Collection<Throwable> getErrors();
-
-    Collection<ArtifactSetRef> getArtifactSets();
+    boolean usesAutoChainedWorkflow();
 
 }
