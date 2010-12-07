@@ -1,18 +1,19 @@
 /*
- *  Copyright (C) 2010 John Casey.
- *  
- *  This program is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU Affero General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
- *  
- *  This program is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU Affero General Public License for more details.
- *  
- *  You should have received a copy of the GNU Affero General Public License
- *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * Copyright (c) 2010 Red Hat, Inc.
+ * 
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see 
+ * <http://www.gnu.org/licenses>.
  */
 
 package org.commonjava.sjbi.maven3.builder;
@@ -21,6 +22,7 @@ import static java.util.Collections.singletonList;
 import static org.commonjava.sjbi.maven3.builder.M3PhaseMapping.mappingFor;
 
 import org.apache.maven.execution.MavenExecutionResult;
+import org.codehaus.plexus.component.annotations.Component;
 import org.commonjava.emb.DefaultEMBExecutionRequest;
 import org.commonjava.emb.boot.embed.EMBEmbedder;
 import org.commonjava.emb.boot.embed.EMBEmbedderBuilder;
@@ -33,6 +35,7 @@ import org.commonjava.sjbi.builder.BuildResult;
 
 import java.io.File;
 
+@Component( role = BuildMechanism.class, hint = "maven3" )
 public class M3Builder
     implements BuildMechanism<M3Context>
 {

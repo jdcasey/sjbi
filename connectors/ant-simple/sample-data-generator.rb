@@ -47,5 +47,7 @@ DATA = {
   ]
 }
 
-# puts DATA.to_yaml
+puts DATA.to_yaml
+puts ''
+puts ''
 puts JSON.pretty_generate( DATA )
