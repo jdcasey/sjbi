@@ -54,6 +54,15 @@ public class SimpleAntBuilder
     @Requirement( role = ArtifactSetValidator.class )
     private Map<String, ArtifactSetValidator> validators;
 
+    public SimpleAntBuilder()
+    {
+    }
+
+    public SimpleAntBuilder( final Map<String, ArtifactSetValidator> validators )
+    {
+        this.validators = validators;
+    }
+
     public BuildCapabilities getBuildCapabilities()
     {
         return SimpleAntCapabilities.INSTANCE;
