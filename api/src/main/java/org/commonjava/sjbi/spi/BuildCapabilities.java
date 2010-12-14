@@ -16,19 +16,15 @@
  * <http://www.gnu.org/licenses>.
  */
 
-package org.commonjava.sjbi.builder;
+package org.commonjava.sjbi.spi;
 
-import org.commonjava.sjbi.model.ArtifactSetRef;
-
-import java.util.Collection;
-
-public interface BuildResult
+public interface BuildCapabilities
 {
 
-    Collection<Throwable> getErrors();
+    boolean usesAutoChainedWorkflow();
 
-    Collection<ArtifactSetRef> getArtifactSets();
+    boolean canGenerateMappings();
 
-    BuildResult addError( final Throwable error );
+    SJBIMappingGenerator getMappingGenerator();
 
 }

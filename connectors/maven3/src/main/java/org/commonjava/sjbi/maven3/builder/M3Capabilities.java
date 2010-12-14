@@ -18,7 +18,8 @@
 
 package org.commonjava.sjbi.maven3.builder;
 
-import org.commonjava.sjbi.builder.BuildCapabilities;
+import org.commonjava.sjbi.spi.BuildCapabilities;
+import org.commonjava.sjbi.spi.SJBIMappingGenerator;
 
 public final class M3Capabilities
     implements BuildCapabilities
@@ -30,9 +31,19 @@ public final class M3Capabilities
     {
     }
 
+    public boolean canGenerateMappings()
+    {
+        return false;
+    }
+
     public boolean usesAutoChainedWorkflow()
     {
         return true;
+    }
+
+    public SJBIMappingGenerator getMappingGenerator()
+    {
+        return SJBIMappingGenerator.NOOP;
     }
 
 }

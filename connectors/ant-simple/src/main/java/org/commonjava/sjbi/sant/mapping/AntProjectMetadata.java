@@ -15,11 +15,47 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.commonjava.sjbi;
+package org.commonjava.sjbi.sant.mapping;
 
-import org.commonjava.sjbi.builder.BuildContext;
+import java.util.Map;
 
-public class SimpleAntContext
-    implements BuildContext
+public class AntProjectMetadata
 {
+
+    private String pom;
+
+    private String coord;
+
+    private Map<String, String> artifacts;
+
+    public String getPom()
+    {
+        return pom;
+    }
+
+    public void setPom( final String pom )
+    {
+        this.pom = pom;
+    }
+
+    public String getCoord()
+    {
+        return coord;
+    }
+
+    public void setCoord( final String coord )
+    {
+        this.coord = coord;
+    }
+
+    public Map<String, String> getArtifacts()
+    {
+        return artifacts;
+    }
+
+    public void setArtifacts( final Map<String, String> artifacts )
+    {
+        this.artifacts = artifacts;
+    }
+
 }

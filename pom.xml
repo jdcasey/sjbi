@@ -51,6 +51,13 @@
         <version>4.8.1</version>
         <scope>test</scope>
       </dependency>
+      <dependency>
+      	<groupId>org.commonjava.emb</groupId>
+      	<artifactId>emb-app-bom</artifactId>
+      	<version>0.5-SNAPSHOT</version>
+      	<type>pom</type>
+      	<scope>import</scope>
+      </dependency>
     </dependencies>
   </dependencyManagement>
 
@@ -67,9 +74,25 @@
         </plugin>
       </plugins>
     </pluginManagement>
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.plexus</groupId>
+        <artifactId>plexus-component-metadata</artifactId>
+        <version>1.5.4</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>generate-metadata</goal>
+              <goal>generate-test-metadata</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
   </build>
   <modules>
     <module>api</module>
     <module>connectors</module>
+    <module>ui</module>
   </modules>
 </project>

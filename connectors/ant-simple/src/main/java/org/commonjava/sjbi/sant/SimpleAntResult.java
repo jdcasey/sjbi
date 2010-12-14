@@ -15,43 +15,51 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.commonjava.sjbi;
+package org.commonjava.sjbi.sant;
 
-import org.commonjava.sjbi.builder.BuildResult;
 import org.commonjava.sjbi.model.ArtifactSetRef;
+import org.commonjava.sjbi.model.AbstractBuildResult;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 public class SimpleAntResult
-    implements BuildResult
+    extends AbstractBuildResult
 {
 
     private final List<Throwable> errors = new ArrayList<Throwable>();
 
     private Collection<ArtifactSetRef> artifactSets;
 
+    SimpleAntResult()
+    {
+    }
+
+    SimpleAntResult( final SimpleAntResult initialResult, final Collection<ArtifactSetRef> refs )
+    {
+        errors.addAll( initialResult.getErrors() );
+        artifactSets =
+            refs == null || refs.isEmpty() ? new ArrayList<ArtifactSetRef>() : new ArrayList<ArtifactSetRef>( refs );
+    }
+
+    @Override
     public SimpleAntResult addError( final Throwable error )
     {
         errors.add( error );
         return this;
     }
 
+    @Override
     public Collection<Throwable> getErrors()
     {
         return errors;
     }
 
+    @Override
     public Collection<ArtifactSetRef> getArtifactSets()
     {
         return artifactSets;
-    }
-
-    BuildResult setArtifactSets( final Collection<ArtifactSetRef> artifactSets )
-    {
-        this.artifactSets = artifactSets;
-        return this;
     }
 
 }

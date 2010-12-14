@@ -15,16 +15,20 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.commonjava.sjbi.validation;
+package org.commonjava.sjbi.model;
 
-import org.commonjava.sjbi.model.ArtifactSetRef;
-import org.commonjava.sjbi.model.BuildResult;
+import java.util.Collection;
+import java.util.Iterator;
 
-public interface ArtifactSetValidator
+public interface BuildResult
 {
 
-    String getId();
+    Collection<Throwable> getErrors();
 
-    boolean isValid( ArtifactSetRef artifactSet, BuildResult result );
+    Collection<ArtifactSetRef> getArtifactSets();
+
+    Iterator<ArtifactSetRef> iterator();
+
+    BuildResult addError( final Throwable error );
 
 }

@@ -12,6 +12,6 @@
   
   <name>Standard Java Build Interface - User Interfaces</name>
   <modules>
-    <module>sjbi-cli</module>
+    <module>cli</module>
   </modules>
 </project>

@@ -15,23 +15,12 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.commonjava.sjbi;
+package org.commonjava.sjbi.sant;
 
-import org.commonjava.sjbi.builder.BuildCapabilities;
+import org.commonjava.sjbi.model.AbstractBuildContext;
 
-public class SimpleAntCapabilities
-    implements BuildCapabilities
+public class SimpleAntContext
+    extends AbstractBuildContext
 {
-
-    public static final SimpleAntCapabilities INSTANCE = new SimpleAntCapabilities();
-
-    private SimpleAntCapabilities()
-    {
-    }
-
-    public boolean usesAutoChainedWorkflow()
-    {
-        return true;
-    }
 
 }

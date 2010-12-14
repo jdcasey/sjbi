@@ -16,9 +16,17 @@
  * <http://www.gnu.org/licenses>.
  */
 
-package org.commonjava.sjbi.builder;
+package org.commonjava.sjbi.model;
+
+import java.util.Map;
 
 public interface BuildContext
 {
+
+    BuildContext setProperty( String key, String value );
+
+    BuildContext setProperties( Map<String, String> properties );
+
+    Map<String, String> getProperties();
 
 }

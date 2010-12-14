@@ -21,29 +21,23 @@ package org.commonjava.sjbi.maven3.builder;
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.execution.MavenExecutionResult;
 import org.apache.maven.project.MavenProject;
-import org.commonjava.sjbi.builder.BuildResult;
 import org.commonjava.sjbi.model.ArtifactSetRef;
+import org.commonjava.sjbi.model.AbstractBuildResult;
 import org.commonjava.sjbi.model.ProjectRef;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 
 public class M3BuildResult
-    implements BuildResult, Iterable<ArtifactSetRef>
+    extends AbstractBuildResult
 {
 
-    private final Collection<ArtifactSetRef> refs;
-
-    private final Collection<Throwable> errors;
-
-    public M3BuildResult( final MavenExecutionResult mavenResult )
+    M3BuildResult( final MavenExecutionResult mavenResult )
     {
-        errors =
-            mavenResult.hasExceptions() ? new ArrayList<Throwable>( mavenResult.getExceptions() )
-                            : new ArrayList<Throwable>();
+        if ( mavenResult.hasExceptions() )
+        {
+            setErrors( mavenResult.getExceptions() );
+        }
 
         final List<ArtifactSetRef> ars = new ArrayList<ArtifactSetRef>();
         for ( final MavenProject project : mavenResult.getTopologicallySortedProjects() )
@@ -64,28 +58,7 @@ public class M3BuildResult
             ars.add( ar );
         }
 
-        refs = Collections.unmodifiableCollection( ars );
-    }
-
-    public Collection<Throwable> getErrors()
-    {
-        return errors;
-    }
-
-    public Collection<ArtifactSetRef> getArtifactSets()
-    {
-        return refs;
-    }
-
-    public Iterator<ArtifactSetRef> iterator()
-    {
-        return refs.iterator();
-    }
-
-    public M3BuildResult addError( final Throwable error )
-    {
-        errors.add( error );
-        return this;
+        setArtifactSets( ars );
     }
 
 }

@@ -16,11 +16,22 @@
  * <http://www.gnu.org/licenses>.
  */
 
-package org.commonjava.sjbi.builder;
+package org.commonjava.sjbi.spi;
 
-public interface BuildCapabilities
+import org.commonjava.sjbi.BuildPhase;
+import org.commonjava.sjbi.SJBIException;
+import org.commonjava.sjbi.model.BuildContext;
+import org.commonjava.sjbi.model.BuildResult;
+import org.commonjava.sjbi.validation.ArtifactSetValidator;
+
+import java.io.File;
+
+public interface BuildMechanism<C extends BuildContext>
 {
 
-    boolean usesAutoChainedWorkflow();
+    BuildMechanism<C> addValidator( ArtifactSetValidator validator );
+
+    BuildResult build( BuildPhase endPhase, File projectDirectory, C context )
+        throws SJBIException;
 
 }

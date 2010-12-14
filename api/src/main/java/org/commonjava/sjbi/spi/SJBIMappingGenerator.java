@@ -15,15 +15,25 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.commonjava.sjbi.mapping;
+package org.commonjava.sjbi.spi;
 
-import org.commonjava.sjbi.SimpleAntContext;
-import org.commonjava.sjbi.builder.BuildException;
+import org.commonjava.sjbi.SJBIException;
 
 import java.io.File;
 
-public interface AntMappingReader
+public interface SJBIMappingGenerator
 {
-    AntMapping readMapping( File projectDirectory, SimpleAntContext context )
-        throws BuildException;
+
+    public static final SJBIMappingGenerator NOOP = new SJBIMappingGenerator()
+    {
+        public File generateMappingsFile( final File projectDirectory )
+            throws SJBIException
+        {
+            return null;
+        }
+    };
+
+    File generateMappingsFile( File projectDirectory )
+        throws SJBIException;
+
 }

@@ -18,10 +18,10 @@
 
 package org.commonjava.sjbi.maven3.builder;
 
-import org.commonjava.sjbi.builder.BuildContext;
+import org.commonjava.sjbi.model.AbstractBuildContext;
 
 public class M3Context
-    implements BuildContext
+    extends AbstractBuildContext
 {
 
 }

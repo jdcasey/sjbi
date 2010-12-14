@@ -18,18 +18,25 @@
 package org.commonjava.sjbi.validation;
 
 import org.codehaus.plexus.component.annotations.Component;
-import org.commonjava.sjbi.builder.BuildException;
-import org.commonjava.sjbi.builder.BuildResult;
+import org.commonjava.sjbi.SJBIException;
 import org.commonjava.sjbi.model.ArtifactRef;
 import org.commonjava.sjbi.model.ArtifactSetRef;
+import org.commonjava.sjbi.model.BuildResult;
 import org.commonjava.sjbi.model.ProjectRef;
 
 import java.io.File;
 
-@Component( role = ArtifactSetValidator.class, hint = "file-existence" )
+@Component( role = ArtifactSetValidator.class, hint = FileExistenceValidator.ID )
 public class FileExistenceValidator
     implements ArtifactSetValidator
 {
+
+    public static final String ID = "file-existence";
+
+    public String getId()
+    {
+        return ID;
+    }
 
     public boolean isValid( final ArtifactSetRef ars, final BuildResult result )
     {
@@ -39,7 +46,7 @@ public class FileExistenceValidator
         final File pom = pr.getPomFile();
         if ( pom == null || !pom.exists() || !pom.isFile() )
         {
-            result.addError( new BuildException( "Invalid POM: %s\nIn: %s", pom, pr.coordKey() ) );
+            result.addError( new SJBIException( "Invalid POM: %s\nIn: %s", pom, pr.coordKey() ) );
             valid = false;
         }
 
@@ -54,8 +61,8 @@ public class FileExistenceValidator
                     classifier = "-NONE-";
                 }
 
-                result.addError( new BuildException( "Invalid artifact file: %s\n\nType: %s\nClassifier: %s\nIn: %s",
-                                                     pom, ref.getType(), classifier, pr.coordKey() ) );
+                result.addError( new SJBIException( "Invalid artifact file: %s\n\nType: %s\nClassifier: %s\nIn: %s",
+                                                    pom, ref.getType(), classifier, pr.coordKey() ) );
                 valid = false;
             }
         }

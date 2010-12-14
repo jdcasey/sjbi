@@ -16,11 +16,11 @@
  * <http://www.gnu.org/licenses>.
  */
 
-package org.commonjava.sjbi.builder;
+package org.commonjava.sjbi;
 
 import java.text.MessageFormat;
 
-public class BuildException
+public class SJBIException
     extends Exception
 {
     private static final long serialVersionUID = 1L;
@@ -29,25 +29,25 @@ public class BuildException
 
     private String formattedMessage;
 
-    public BuildException( final String message, final Throwable cause )
+    public SJBIException( final String message, final Throwable cause )
     {
         super( message, cause );
         params = null;
     }
 
-    public BuildException( final String message )
+    public SJBIException( final String message )
     {
         super( message );
         params = null;
     }
 
-    public BuildException( final String message, final Throwable cause, final Object... params )
+    public SJBIException( final String message, final Throwable cause, final Object... params )
     {
         super( message, cause );
         this.params = params;
     }
 
-    public BuildException( final String message, final Object... params )
+    public SJBIException( final String message, final Object... params )
     {
         super( message );
         this.params = params;

@@ -15,47 +15,27 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.commonjava.sjbi.mapping;
+package org.commonjava.sjbi.spi;
 
-import java.util.Map;
+import org.commonjava.sjbi.BuildPhase;
+import org.commonjava.sjbi.SJBIException;
+import org.commonjava.sjbi.model.BuildContext;
+import org.commonjava.sjbi.model.BuildResult;
 
-public class AntProjectMetadata
+import java.io.File;
+
+public interface BuildService<C extends BuildContext>
 {
 
-    private String pom;
+    String getId();
 
-    private String coord;
+    boolean canBuild( File projectDirectory );
 
-    private Map<String, String> artifacts;
+    C newBuildContext();
 
-    public String getPom()
-    {
-        return pom;
-    }
+    BuildCapabilities getCapabilities();
 
-    public void setPom( final String pom )
-    {
-        this.pom = pom;
-    }
-
-    public String getCoord()
-    {
-        return coord;
-    }
-
-    public void setCoord( final String coord )
-    {
-        this.coord = coord;
-    }
-
-    public Map<String, String> getArtifacts()
-    {
-        return artifacts;
-    }
-
-    public void setArtifacts( final Map<String, String> artifacts )
-    {
-        this.artifacts = artifacts;
-    }
+    BuildResult build( BuildPhase endPhase, File projectDirectory, C context )
+        throws SJBIException;
 
 }

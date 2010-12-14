@@ -15,16 +15,35 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.commonjava.sjbi.validation;
+package org.commonjava.sjbi.sant;
 
-import org.commonjava.sjbi.model.ArtifactSetRef;
-import org.commonjava.sjbi.model.BuildResult;
+import org.commonjava.sjbi.sant.mapping.AntMappingGenerator;
+import org.commonjava.sjbi.spi.BuildCapabilities;
+import org.commonjava.sjbi.spi.SJBIMappingGenerator;
 
-public interface ArtifactSetValidator
+public class SimpleAntCapabilities
+    implements BuildCapabilities
 {
 
-    String getId();
+    public static final SimpleAntCapabilities INSTANCE = new SimpleAntCapabilities();
 
-    boolean isValid( ArtifactSetRef artifactSet, BuildResult result );
+    private SimpleAntCapabilities()
+    {
+    }
+
+    public boolean canGenerateMappings()
+    {
+        return true;
+    }
+
+    public boolean usesAutoChainedWorkflow()
+    {
+        return true;
+    }
+
+    public SJBIMappingGenerator getMappingGenerator()
+    {
+        return new AntMappingGenerator();
+    }
 
 }

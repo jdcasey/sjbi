@@ -15,7 +15,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.commonjava.sjbi.mapping;
+package org.commonjava.sjbi.sant.mapping;
 
 import org.commonjava.sjbi.BuildPhase;
 import org.commonjava.sjbi.model.ArtifactSetRef;
