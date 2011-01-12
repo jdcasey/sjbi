@@ -32,7 +32,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
 
-public class AntMappingGenerator
+public class AntMappingWriter
     implements SJBIMappingGenerator
 {
 
@@ -96,9 +96,15 @@ public class AntMappingGenerator
         return mappingFile;
     }
 
-    private void writeMapping( final AntMapping mapping, final File mappingFile )
+    public void writeMapping( final AntMapping mapping, final File target )
         throws SJBIException
     {
+        File mappingFile = target;
+        if ( mappingFile.isDirectory() )
+        {
+            mappingFile = new File( mappingFile, AntMappingReader.FILENAME );
+        }
+
         FileWriter writer = null;
         try
         {
@@ -107,7 +113,7 @@ public class AntMappingGenerator
         }
         catch ( final IOException e )
         {
-            throw new SJBIException( "Failed to write mappings file: %s\nReason: %s", e, mappingFile, e.getMessage() );
+            throw new SJBIException( "Failed to write mappings file: %s\nReason: %s", e, target, e.getMessage() );
         }
         finally
         {

@@ -17,7 +17,7 @@
 
 package org.commonjava.sjbi.sant;
 
-import org.commonjava.sjbi.sant.mapping.AntMappingGenerator;
+import org.commonjava.sjbi.sant.mapping.AntMappingWriter;
 import org.commonjava.sjbi.spi.BuildCapabilities;
 import org.commonjava.sjbi.spi.SJBIMappingGenerator;
 
@@ -43,7 +43,7 @@ public class SimpleAntCapabilities
 
     public SJBIMappingGenerator getMappingGenerator()
     {
-        return new AntMappingGenerator();
+        return new AntMappingWriter();
     }
 
 }

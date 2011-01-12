@@ -119,4 +119,10 @@ public class AntMapping
         return refs;
     }
 
+    public boolean isValid()
+    {
+        return getBuildFile() != null && getPhaseMappings() != null && !getPhaseMappings().isEmpty()
+                        && getProjects() != null && !getProjects().isEmpty();
+    }
+
 }

@@ -54,7 +54,7 @@
       <dependency>
       	<groupId>org.commonjava.emb</groupId>
       	<artifactId>emb-app-bom</artifactId>
-      	<version>0.5-SNAPSHOT</version>
+      	<version>0.5</version>
       	<type>pom</type>
       	<scope>import</scope>
       </dependency>
